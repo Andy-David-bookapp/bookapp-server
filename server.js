@@ -25,3 +25,7 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.static('./public'));
 
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
+
+app.get('/', (request, response) => {
+  response.send('test 1 2 3');
+});
