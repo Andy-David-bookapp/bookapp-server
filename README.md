@@ -1,11 +1,10 @@
-﻿# Project Name
+﻿# Book App
 
-**Author**: David Hull & Ben Harris
-**Version**: 1.0.0 (increment the patch/fix version number up if you make more commits past your first submission)
+**Author**: David Hull & Andy Helmer
+**Version**: 1.0.0
 
 ## Overview
-This is a site for users to create and read blog articles. Articles have typical attributes such as a title, an 
-author, body, and when it was published.
+
 
 ## Getting Started
 git clone this repo to begin using this web site app.
@@ -27,6 +26,5 @@ We have a server running that support get web requests and serves up various pag
 using a PostgreSQL database for articles.
 
 ## Credits and Collaborations
-Ben Harris and David Hull.
+Andy Helmer and David Hull.
 MIT License.
-Vendor icons and normalize.
