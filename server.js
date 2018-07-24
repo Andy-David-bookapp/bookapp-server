@@ -1,12 +1,13 @@
 'use strict';
 
+// TODO REVIEW should the server side also use iife?
+
 const pg = require('pg');
 const express = require('express');
-/**
- * Notes from lecture: we need one of the two port lines below depending on whether we're running locally, or deploying.
- * The preferred method is the first one. Another way to do this is to use command line with the following:
- * export PORT=3000. TODO Figure out why the command does not work in IntelliJ terminal.
- */
+// TODO REVIEW Use HTTP CORS to allow this web app to access the database from a different domain.
+// https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
+// TODO there is something in here we need like const cors (id:string) => any
+
 const PORT = process.env.PORT; //this is the preferred method
 // const PORT = process.env.PORT || 3000; //this is when running locally
 
@@ -27,7 +28,7 @@ app.use(express.static('./public'));
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
 
 app.get('/books', (request, response) => {
-  let sql = 'SELECT * FROM books';
+  let sql = 'SELECT book_id, author, title, isbn, image_url, description FROM books';
 
   client
     .query(sql)
