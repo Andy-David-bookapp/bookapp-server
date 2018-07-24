@@ -26,6 +26,15 @@ app.use(express.static('./public'));
 
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
 
-app.get('/', (request, response) => {
-  response.send('test 1 2 3');
+app.get('/books', (request, response) => {
+  let sql = 'SELECT * FROM books';
+
+  client
+    .query(sql)
+    .then(function (result) {
+      response.send(result.rows);
+    })
+    .catch(function (err) {
+      console.error(err);
+    });
 });
