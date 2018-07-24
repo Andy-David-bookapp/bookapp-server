@@ -1,0 +1,15 @@
+CREATE TABLE books (book_id int NOT NULL AUTO_INCREMENT, author varchar(255), title varchar(255), isbn char(21), image_url varchar(255), description varchar(2056), PRIMARY KEY (book_id));
+
+CREATE UNIQUE INDEX index_name
+ON books (column_name_1, column_name_2, ...)
+
+
+
+ALTER TABLE books MODIFY COLUMN book_id INT auto_increment
+
+
+
+SERIAL PRIMARY KEY
+
+
+CREATE TABLE books (book_id SERIAL PRIMARY KEY, author varchar(255), title varchar(255), isbn char(21), image_url varchar(255), description varchar(2056));

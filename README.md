@@ -4,7 +4,10 @@
 **Version**: 1.0.0
 
 ## Overview
-
+### Server URL
+https://ah-dh-bookapp-server.herokuapp.com/
+### API & DB Config URL
+https://dashboard.heroku.com/apps/ah-dh-bookapp-server
 
 ## Getting Started
 git clone this repo to begin using this web site app.
