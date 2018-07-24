@@ -12,8 +12,10 @@ const PORT = process.env.PORT; //this is the preferred method
 // const PORT = process.env.PORT || 3000; //this is when running locally
 
 const app = express();
-
-const conString = 'postgres://hoffit:password@localhost:5432/kilovolt';
+// TODO REVIEW What is the deployed db
+// const conString = 'postgres://hoffit:password@localhost:5432/books_app';
+const conString = 'postgres://sokqhqjxzbhshd:59a24d75cd73b92f8cb8cd9dd2bcb86e5d32ba08f22992a18fc1487b96c16b2d@ec2-54-204-23-228.compute-1.amazonaws.com:5432/d3t5euqm6musdv'
+console.log('app server side con string is '+conString);
 
 const client = new pg.Client(conString);
 client.connect();
