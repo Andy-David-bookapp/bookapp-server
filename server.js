@@ -37,8 +37,8 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(express.static('./public'));
 
-// TODO change to api notation like this /api/v1/books
-app.get('/books', (request, response) => {
+// TODone change to api notation like this /api/v1/books
+app.get('/api/v1/books', (request, response) => {
   let sql = 'SELECT book_id, author, title, isbn, image_url, description FROM books';
 
   client
