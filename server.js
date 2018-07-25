@@ -1,6 +1,7 @@
 'use strict';
 
-// TODO REVIEW should the server side also use iife?
+// TODone REVIEW should the server side also use iife?
+// No; client side has multiple js file like views and models, and name collision prevention is more relevant there.
 
 const pg = require('pg');
 const express = require('express');
@@ -36,8 +37,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(express.static('./public'));
 
-app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
-
+// TODO change to api notation like this /api/v1/books
 app.get('/books', (request, response) => {
   let sql = 'SELECT book_id, author, title, isbn, image_url, description FROM books';
 
@@ -51,3 +51,5 @@ app.get('/books', (request, response) => {
     });
 });
 app.get('*', (request, result) => result.status(404).send('this route does not exist'));
+
+app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
