@@ -24,7 +24,7 @@ const conString = process.env.DATABASE_URL;
 // This next line is incorrect...don't hard config database url...
 // const conString = 'postgres://sokqhqjxzbhshd:59a24d75cd73b92f8cb8cd9dd2bcb86e5d32ba08f22992a18fc1487b96c16b2d@ec2-54-204-23-228.compute-1.amazonaws.com:5432/d3t5euqm6musdv'
 // When running local, extra step to setup that env variable using terminal command export DATABASE_URL='postgres://hoffit:password@localhost:5432/books_app'
-
+//                                                                                         DATABASE_URL='postgres://postgres:Angrybritches07@localhost:5432/books_app'
 console.log('app server side con string is '+conString);
 
 const client = new pg.Client(conString);
@@ -50,5 +50,6 @@ app.get('/books', (request, response) => {
       console.error(err);
     });
 });
+app.get('*', (request, result) => result.status(404).send('this route does not exist'));
 
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
