@@ -25,7 +25,7 @@ const conString = process.env.DATABASE_URL;
 // const conString = 'postgres://sokqhqjxzbhshd:59a24d75cd73b92f8cb8cd9dd2bcb86e5d32ba08f22992a18fc1487b96c16b2d@ec2-54-204-23-228.compute-1.amazonaws.com:5432/d3t5euqm6musdv'
 // When running local, extra step to setup that env variable using terminal command export DATABASE_URL='postgres://hoffit:password@localhost:5432/books_app'
 //                                                                                         DATABASE_URL='postgres://postgres:Angrybritches07@localhost:5432/books_app'
-console.log('app server side con string is '+conString);
+console.log('app server side con string is ' + conString);
 
 const client = new pg.Client(conString);
 client.connect();
@@ -38,7 +38,7 @@ app.use(express.urlencoded({extended: true}));
 app.use(express.static('./public'));
 
 // TODone change to api notation like this /api/v1/books
-app.get('/api/v1/books', (request, response) => {
+app.get('/api/v1/books/', (request, response) => {
   let sql = 'SELECT book_id, author, title, image_url FROM books';
 
   client
@@ -50,12 +50,12 @@ app.get('/api/v1/books', (request, response) => {
       console.error(err);
     });
 });
-app.get('/api/v1/books:id', (request, response) => {
+
+app.get('/api/v1/books/:id', (request, response) => {
   let sql = 'SELECT book_id, author, title, isbn, description, image_url FROM books WHERE book_id=$1';
   let values = [
-    request.body.params_id
+    request.params.id
   ];
-
 
   client
     .query(sql, values)
