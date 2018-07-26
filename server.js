@@ -9,8 +9,8 @@ const express = require('express');
 // https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
 const cors = require('cors');
 
-// const PORT = process.env.PORT; //this is the preferred method
-const PORT = process.env.PORT || 3000; //this is when running locally
+const PORT = process.env.PORT; //this is the preferred method
+// const PORT = process.env.PORT || 3000; //this is when running locally
 
 const app = express();
 app.use(cors());
