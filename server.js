@@ -39,7 +39,7 @@ app.use(express.static('./public'));
 
 // TODone change to api notation like this /api/v1/books
 app.get('/api/v1/books', (request, response) => {
-  let sql = 'SELECT book_id, author, title, isbn, image_url, description FROM books';
+  let sql = 'SELECT book_id, author, title, image_url FROM books';
 
   client
     .query(sql)
@@ -50,6 +50,23 @@ app.get('/api/v1/books', (request, response) => {
       console.error(err);
     });
 });
+app.get('/api/v1/books:id', (request, response) => {
+  let sql = 'SELECT book_id, author, title, isbn, description, image_url FROM books WHERE book_id=$1';
+  let values = [
+    request.body.params_id
+  ];
+
+
+  client
+    .query(sql, values)
+    .then(function (result) {
+      response.send(result.rows);
+    })
+    .catch(function (err) {
+      console.error(err);
+    });
+});
+
 app.get('*', (request, result) => result.status(404).send('this route does not exist'));
 
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
