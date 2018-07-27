@@ -67,6 +67,24 @@ app.get('/api/v1/books/:id', (request, response) => {
     });
 });
 
+app.post('/api/v1/books', (request, response) => {
+
+    const sql = 'INSERT INTO books(author, title, isbn, description, image_url) VALUES ($1,$2,$3,$4,$5)';
+    let values = [
+      request.body.author,
+      request.body.title,
+      request.body.isbn,
+      request.body.description,
+      request.body.image_url
+    ];
+    client.query(sql, values,
+      function (err) {
+        if (err) console.error(err);
+        response.send('insert complete');
+      }
+    );
+});
+
 app.get('*', (request, result) => result.status(404).send('this route does not exist'));
 
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`));
