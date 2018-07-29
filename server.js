@@ -68,7 +68,7 @@ app.get('/api/v1/books/:id', (request, response) => {
 });
 
 app.post('/api/v1/books', (request, response) => {
-
+console.log(request);
     const sql = 'INSERT INTO books(author, title, isbn, description, image_url) VALUES ($1,$2,$3,$4,$5)';
     let values = [
       request.body.author,
